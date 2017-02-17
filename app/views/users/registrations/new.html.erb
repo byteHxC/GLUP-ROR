@@ -1,41 +1,48 @@
-<h2>Registrate</h2>
+<div class="main-background">
+  <div class="center">
+      <%= image_tag'logobeta.png', class: "responsive-img", style: "margin-top:5em;"%>
+    <div class="container ">
+        <div class="row">
+          <div class="col s8 m8 l6 offset-s2 offset-m2 offset-l3">
+            <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+              <%= devise_error_messages! %>
+              <div class="field input-field">
+                <%= f.text_field :name,id: "name", autofocus: true, required: true, class: "validate" %>
+                <%= f.label :Nombre, for: "name", style: "text-align: left;", data: {error: "Incorrecto", success: "Correcto" } %><br>
+              </div>
+              <div class="field input-field">
+                <%= f.text_field :lastname,id: "lastname", required: true, class: "validate" %>
+                <%= f.label :Apellidos, for: "lastname", style: "text-align: left;", data: {error: "Incorrecto", success: "Correcto" } %><br>
+              </div>
+              <div class="field input-field">
+                <%= f.text_field :username,id: "username", required: true, class: "validate" %>
+                <%= f.label :Nombre_de_usuario, for: "username", style: "text-align: left;", data: {error: "Incorrecto", success: "Correcto" } %><br>
+              </div>
+              <div class="field input-field">
+                <%= f.email_field :email,id: "email", required: true, class: "validate" %>
+                <%= f.label :Correo_electronico, for: "email", style: "text-align: left;", data: {error: "Incorrecto", success: "Correcto" } %><br>
+              </div>
 
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-  <%= devise_error_messages! %>
-  <div class="field">
-    <%= f.label :Nombre %><br>
-    <%= f.text_field :name, autofocus: true %>
-  </div>
-  <div class="field">
-    <%= f.label :Apellidos %><br>
-    <%= f.text_field :lastname %>
-  </div>
-  <div class="field">
-    <%= f.label :Nombre_de_usuario %><br>
-    <%= f.text_field :username %>
-  </div>
-  <div class="field">
-    <%= f.label :Correo_electronico %><br />
-    <%= f.email_field :email %>
-  </div>
 
+              <div class="field input-field">
+                <%= f.password_field :password, autocomplete: "off" %>
+                <%= f.label :Password_6_caracteres_minimo, for: "password", style: "text-align: left;" %>
+                
+              </div>
 
-  <div class="field">
-    <%= f.label :password %>
-    <% if @minimum_password_length %>
-    <em>(<%= @minimum_password_length %> characters minimum)</em>
-    <% end %><br />
-    <%= f.password_field :password, autocomplete: "off" %>
+              <div class="field input-field">
+                <%= f.password_field :password_confirmation, autocomplete: "off", required: true  %>
+                <%= f.label :password_confirmation, for: "password_confirmation", style: "text-align: left" %>
+              </div>
+
+              <div class="actions">
+                <%= f.submit "Registrarse", class: "waves-effect waves-light btn" %>
+              </div>
+              <% end %>
+          </div>
+        </div>
+         
+    </div>
   </div>
+</div>
 
-  <div class="field">
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "off" %>
-  </div>
-
-  <div class="actions">
-    <%= f.submit "Sign up" %>
-  </div>
-<% end %>
-
-<%= render "users/shared/links" %>
